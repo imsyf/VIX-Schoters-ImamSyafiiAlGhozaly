@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("org.jetbrains.kotlin.plugin.parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -59,6 +60,7 @@ dependencies {
     implementation(Square.moshi)
     implementation(Square.moshi.adapters)
     kapt(Square.moshi.kotlinCodegen)
+    implementation(Square.okHttp3.okHttp)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
     implementation("co.infinum:retromock:_")

@@ -9,7 +9,7 @@ import im.syf.nuice.data.remote.NewsApiService
 class NuiceApp : Application() {
 
     val newsApiService: NewsApiService by lazy {
-        NewsApiClient(this).newsApiService
+        NewsApiClient.newsApiService
     }
 
     val bookmarkDao: BookmarkDao by lazy {

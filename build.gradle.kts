@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath(AndroidX.navigation.safeArgsGradlePlugin)
+        classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:_")
     }
 }
 
