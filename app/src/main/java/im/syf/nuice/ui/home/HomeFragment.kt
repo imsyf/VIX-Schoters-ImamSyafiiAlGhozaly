@@ -18,11 +18,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import im.syf.nuice.NuiceApp
 import im.syf.nuice.R
-import im.syf.nuice.databinding.PlaceholderBinding
+import im.syf.nuice.databinding.LayoutEpoxyBinding
+import im.syf.nuice.placeholder
 
 class HomeFragment : Fragment() {
 
-    private var _binding: PlaceholderBinding? = null
+    private var _binding: LayoutEpoxyBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels {
@@ -39,7 +40,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = PlaceholderBinding.inflate(inflater, container, false)
+        _binding = LayoutEpoxyBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -47,10 +48,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupOptionsMenu()
 
-        binding.textview.setText(R.string.home)
-
         viewModel.state.observe(viewLifecycleOwner) { (response) ->
-            binding.textview.text = "${response.articles.size}"
+            binding.epoxy.withModels {
+                placeholder {
+                    id("placeholder")
+                    text("${response.articles.size}")
+                }
+            }
         }
     }
 

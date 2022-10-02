@@ -34,6 +34,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        dataBinding = true
         viewBinding = true
     }
 }
@@ -45,6 +46,9 @@ dependencies {
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.navigation.fragmentKtx)
     implementation(AndroidX.navigation.uiKtx)
+    implementation("com.airbnb.android:epoxy:_")
+    implementation("com.airbnb.android:epoxy-databinding:_")
+    kapt("com.airbnb.android:epoxy-processor:_")
     implementation(Square.moshi)
     implementation(Square.moshi.adapters)
     kapt(Square.moshi.kotlinCodegen)
