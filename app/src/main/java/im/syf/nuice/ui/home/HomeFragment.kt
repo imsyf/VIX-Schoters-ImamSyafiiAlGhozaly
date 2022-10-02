@@ -10,9 +10,13 @@ import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
+import im.syf.nuice.NuiceApp
 import im.syf.nuice.R
 import im.syf.nuice.databinding.PlaceholderBinding
 
@@ -20,6 +24,15 @@ class HomeFragment : Fragment() {
 
     private var _binding: PlaceholderBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: HomeViewModel by viewModels {
+        viewModelFactory {
+            initializer {
+                val app = activity?.application as NuiceApp
+                HomeViewModel(app.newsApiService)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +48,10 @@ class HomeFragment : Fragment() {
         setupOptionsMenu()
 
         binding.textview.setText(R.string.home)
+
+        viewModel.state.observe(viewLifecycleOwner) { (response) ->
+            binding.textview.text = "${response.articles.size}"
+        }
     }
 
     private fun setupOptionsMenu() {

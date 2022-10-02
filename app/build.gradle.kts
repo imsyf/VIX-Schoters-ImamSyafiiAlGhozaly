@@ -50,6 +50,7 @@ dependencies {
     kapt(Square.moshi.kotlinCodegen)
     implementation(Square.retrofit2.converter.moshi)
     implementation(Square.retrofit2.retrofit)
+    implementation("co.infinum:retromock:_")
     testImplementation(Testing.junit4)
     androidTestImplementation(AndroidX.test.ext.junit)
     androidTestImplementation(AndroidX.test.espresso.core)
