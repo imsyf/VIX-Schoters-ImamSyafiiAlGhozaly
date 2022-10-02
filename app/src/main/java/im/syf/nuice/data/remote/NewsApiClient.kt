@@ -19,6 +19,7 @@ object NewsApiClient {
 
     private val auth = Interceptor { chain ->
         val request = chain.request().newBuilder()
+            // Add NEWSAPI_KEY="your api key here" in local.properties
             .addHeader("X-Api-Key", BuildConfig.NEWSAPI_KEY)
             .build()
 
