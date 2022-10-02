@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -44,6 +45,11 @@ dependencies {
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.navigation.fragmentKtx)
     implementation(AndroidX.navigation.uiKtx)
+    implementation(Square.moshi)
+    implementation(Square.moshi.adapters)
+    kapt(Square.moshi.kotlinCodegen)
+    implementation(Square.retrofit2.converter.moshi)
+    implementation(Square.retrofit2.retrofit)
     testImplementation(Testing.junit4)
     androidTestImplementation(AndroidX.test.ext.junit)
     androidTestImplementation(AndroidX.test.espresso.core)
