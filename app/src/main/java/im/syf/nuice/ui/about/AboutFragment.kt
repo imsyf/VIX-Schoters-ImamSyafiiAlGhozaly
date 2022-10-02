@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import im.syf.nuice.R
-import im.syf.nuice.databinding.PlaceholderBinding
+import im.syf.nuice.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
 
-    private var _binding: PlaceholderBinding? = null
+    private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,13 +17,8 @@ class AboutFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = PlaceholderBinding.inflate(inflater, container, false)
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.textview.setText(R.string.about)
     }
 
     override fun onDestroyView() {

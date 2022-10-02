@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/ava"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:contentDescription="@null"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="H,16:9"
+        android:src="@drawable/square"
+        app:layout_constraintBottom_toTopOf="@id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/name"
         style="@style/TextAppearance.Material3.TitleMedium"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="3dp"
+        android:text="Imam Syafi'i Al Ghozaly"
+        app:layout_constraintBottom_toTopOf="@id/github"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thumbnail"
-        tools:text="9 Best Free Ruby and Ruby on Rails Courses" />
+        app:layout_constraintTop_toBottomOf="@id/ava" />
+
+    <TextView
+        android:id="@+id/github"
+        style="@style/TextAppearance.Material3.TitleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="6dp"
+        android:text="https://github.com/imsyf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
