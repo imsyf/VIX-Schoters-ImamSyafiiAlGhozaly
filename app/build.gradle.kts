@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.plugin.parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -44,11 +46,16 @@ dependencies {
     implementation(AndroidX.appCompat)
     implementation(Google.android.material)
     implementation(AndroidX.constraintLayout)
+    implementation(AndroidX.lifecycle.liveDataKtx)
     implementation(AndroidX.navigation.fragmentKtx)
     implementation(AndroidX.navigation.uiKtx)
+    implementation(AndroidX.room.runtime)
+    implementation(AndroidX.room.ktx)
+    kapt(AndroidX.room.compiler)
     implementation("com.airbnb.android:epoxy:_")
     implementation("com.airbnb.android:epoxy-databinding:_")
     kapt("com.airbnb.android:epoxy-processor:_")
+    implementation("io.coil-kt:coil:_")
     implementation(Square.moshi)
     implementation(Square.moshi.adapters)
     kapt(Square.moshi.kotlinCodegen)

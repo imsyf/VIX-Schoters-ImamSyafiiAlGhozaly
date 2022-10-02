@@ -29,4 +29,23 @@
         android:label="@string/bookmark"
         tools:layout="@layout/placeholder" />
 
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="im.syf.nuice.ui.details.DetailsFragment"
+        android:label="@string/details">
+
+        <argument
+            android:name="article"
+            app:argType="im.syf.nuice.data.remote.response.ArticleDto" />
+
+        <argument
+            android:name="timeAgo"
+            app:argType="string" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/to_details_fragment"
+        app:destination="@id/details_fragment" />
+
 </navigation>

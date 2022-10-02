@@ -19,7 +19,8 @@ import androidx.navigation.ui.onNavDestinationSelected
 import im.syf.nuice.NuiceApp
 import im.syf.nuice.R
 import im.syf.nuice.databinding.LayoutEpoxyBinding
-import im.syf.nuice.placeholder
+import im.syf.nuice.ext.timeAgo
+import im.syf.nuice.topHeadline
 
 class HomeFragment : Fragment() {
 
@@ -48,11 +49,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupOptionsMenu()
 
-        viewModel.state.observe(viewLifecycleOwner) { (response) ->
+        viewModel.state.observe(viewLifecycleOwner) {
             binding.epoxy.withModels {
-                placeholder {
-                    id("placeholder")
-                    text("${response.articles.size}")
+                for (article in it.response.articles) {
+                    val timeAgo = article.publishedAt.timeAgo
+
+                    topHeadline {
+                        id(article.url)
+                        article(article)
+                        timeAgo(timeAgo)
+                        onClick { model, parentView, clickedView, position ->
+                            val directions =
+                                HomeFragmentDirections.toDetailsFragment(article, timeAgo)
+                            findNavController().navigate(directions)
+                        }
+                    }
                 }
             }
         }
